@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
@@ -102,6 +103,8 @@ public class AddNewItemActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        Toast.makeText(this, "Added item with name: " + itemName.getText().toString(), Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

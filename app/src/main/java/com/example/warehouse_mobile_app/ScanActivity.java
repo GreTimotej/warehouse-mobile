@@ -133,6 +133,7 @@ public class ScanActivity extends AppCompatActivity {
     }
 
     public void backMain(View view) {
+        finish();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

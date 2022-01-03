@@ -41,12 +41,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void scanItem(View view) {
-        Intent intent = new Intent(this, AddNewItemActivity.class);
+        Intent intent = new Intent(this, ScanActivity.class);
         startActivity(intent);
-    }
-
-    public void exitApp(View view) {
-        finish();
-        System.exit(0);
     }
 }

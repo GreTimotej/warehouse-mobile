@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Ime" />
+        android:text="Name" />
 
     <EditText
         android:id="@+id/itemDesc"
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textMultiLine"
-        android:text="Priimek" />
+        android:text="Description" />
 
     <EditText
         android:id="@+id/itemQantity"
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
-        android:text="Datum" />
+        android:text="Quantity" />
 
     <EditText
         android:id="@+id/itemWarehouse"
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
-        android:text="Datum" />
+        android:text="WarehouseID" />
 
     <EditText
         android:id="@+id/itemCustomer"
@@ -59,14 +59,14 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
-        android:text="Datum" />
+        android:text="CustomerID" />
 
     <Button
         android:id="@+id/submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="addItemFin"
-        android:text="Poslji" />
+        android:text="Add Item" />
 
     </LinearLayout>
 
