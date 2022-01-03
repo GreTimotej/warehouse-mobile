@@ -114,4 +114,12 @@
         app:layout_constraintTop_toBottomOf="@+id/activeTextView"
         app:layout_constraintVertical_bias="0.891" />
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="134dp"
+        tools:layout_editor_absoluteY="406dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private String url = "https://warehouse-is.azurewebsites.net/api/";
     private int currentWarehouse = 0;
     public static final String EXTRA_NUMBER = "";
+    public static Boolean IS_FROM_MAINMENU = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +38,30 @@ public class MainActivity extends AppCompatActivity {
 
     public void addItem(View view) {
         Intent intent = new Intent(this, AddNewItemActivity.class);
+        intent.putExtra("IS_FROM_MAINMENU", true);
         startActivity(intent);
     }
 
     public void scanItem(View view) {
         Intent intent = new Intent(this, ScanActivity.class);
+        startActivity(intent);
+    }
+
+    public void openWarehouse(View view) {
+        Intent intent = new Intent(this, WarehouseActivity.class);
+        intent.putExtra("IS_FROM_MAINMENU", true);
+        startActivity(intent);
+    }
+
+    public void openCustomer(View view) {
+        Intent intent = new Intent(this, CustomerActivity.class);
+        intent.putExtra("IS_FROM_MAINMENU", true);
+        startActivity(intent);
+    }
+
+    public void openItems(View view) {
+        Intent intent = new Intent(this, WarehouseActivity.class);
+        intent.putExtra("IS_TO_ITEMS", true);
         startActivity(intent);
     }
 }

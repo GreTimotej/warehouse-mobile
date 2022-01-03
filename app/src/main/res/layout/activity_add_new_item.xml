@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name" />
+        android:text="Name: " />
 
     <EditText
         android:id="@+id/itemDesc"
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textMultiLine"
-        android:text="Description" />
+        android:text="Description: " />
 
     <EditText
         android:id="@+id/itemQantity"
@@ -43,30 +43,40 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
-        android:text="Quantity" />
+        android:text="Quantity: " />
 
-    <EditText
-        android:id="@+id/itemWarehouse"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        android:text="WarehouseID" />
-
-    <EditText
-        android:id="@+id/itemCustomer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        android:text="CustomerID" />
 
     <Button
-        android:id="@+id/submit"
+        android:id="@+id/chooseWarehouse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Choose warehouse"
+        android:onClick="openWarehouseSelection"/>
+
+    <Button
+        android:id="@+id/chooseCustomer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Choose customer"
+        android:onClick="openCustomerSelection"/>
+
+        <Button
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
         android:onClick="addItemFin"
-        android:text="Add Item" />
+        android:text="Add Item"
+        android:backgroundTint="#1580eb" />
+
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_gravity="bottom"
+            android:backgroundTint="#eb2315"
+            android:text="Back to Main Menu"
+            android:textSize="20sp"
+            android:onClick="backMain"/>
 
     </LinearLayout>
 

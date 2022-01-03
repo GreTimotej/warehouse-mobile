@@ -13,7 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Warehouse_mobile_app"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AddNewItemActivity"></activity>
+        <activity android:name=".AllItemsActivity"></activity>
+        <activity android:name=".CustomerActivity" />
+        <activity
+            android:name=".WarehouseActivity"
+            android:label="@string/title_activity_warehouse"
+            android:theme="@style/Theme.Warehouse_mobile_app.NoActionBar" />
+        <activity android:name=".AddNewItemActivity" />
         <activity android:name=".ItemActivity" />
         <activity android:name=".ScanActivity" />
         <activity android:name=".MainActivity">

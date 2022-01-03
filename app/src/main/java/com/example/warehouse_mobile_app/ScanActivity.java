@@ -14,6 +14,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.budiyev.android.codescanner.CodeScanner;
@@ -26,7 +27,7 @@ public class ScanActivity extends AppCompatActivity {
     private CodeScanner mCodeScanner;
     Boolean CameraPermisson = false;
     final int CAMERA_PERM = 1;
-    public static final String EXTRA_STRING = "";
+    public static String SCANNED_ID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +55,10 @@ public class ScanActivity extends AppCompatActivity {
                 @Override
                 public void onDecoded(@NonNull Result result) {
                     Intent myIntent = new Intent(ScanActivity.this, ItemActivity.class);
-                    myIntent.putExtra(EXTRA_STRING, result.getText());
+                    myIntent.putExtra(SCANNED_ID, result.getText());
                     startActivity(myIntent);
+                    //Button t = findViewById(R.id.backButton);
+                    //t.setText(result.getText());
                 }
             });
         }

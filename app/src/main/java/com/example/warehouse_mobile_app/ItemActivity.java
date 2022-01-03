@@ -36,7 +36,7 @@ import java.util.Date;
 
 public class ItemActivity extends AppCompatActivity {
 
-    String itemUrl = "";
+    String itemUrl;
     private RequestQueue requestQueue;
     private TextView idText;
     private TextView nameText;
@@ -59,13 +59,16 @@ public class ItemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_item);
 
         Intent intent = getIntent();
-        itemUrl = "https://warehouse-is.azurewebsites.net/api/itemapi/" + intent.getStringExtra(ScanActivity.EXTRA_STRING);
+
+        itemUrl = "https://warehouse-is.azurewebsites.net/api/itemapi/" + intent.getStringExtra(ScanActivity.SCANNED_ID);
         //itemUrl = "https://warehouse-is.azurewebsites.net/api/itemapi/5";
+
         idText = findViewById(R.id.idTextView);
         nameText = findViewById(R.id.nameTextView);
         descText = findViewById(R.id.descriptionTextView);
         quantityText = findViewById(R.id.quantityTextView);
         activeText = findViewById(R.id.activeTextView);
+        status = findViewById(R.id.textView);
         status.setText(itemUrl);
         requestQueue = Volley.newRequestQueue(getApplicationContext());
 

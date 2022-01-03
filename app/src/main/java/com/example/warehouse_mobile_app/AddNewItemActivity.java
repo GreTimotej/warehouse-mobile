@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,8 +32,13 @@ public class AddNewItemActivity extends AppCompatActivity {
     private EditText itemName;
     private EditText itemDesc;
     private EditText itemQuan;
-    private EditText itemWare;
-    private EditText itemCust;
+    private Button itemWare;
+    private Button itemCust;
+    public static String ITEM_CUSTOMER_ID = "Choose customer";
+    public static String ITEM_WAREHOUSE_ID = "Choose warehouse";
+    public static String ITEM_QUANTITY = "Quantity: ";
+    public static String ITEM_DESCRIPTION = "Description: ";
+    public static String ITEM_NAME = "Name:";
 
     private RequestQueue requestQueue;
     private String url = "https://warehouse-is.azurewebsites.net/api/itemapi";
@@ -42,23 +48,34 @@ public class AddNewItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_item);
 
+        Intent intent = getIntent();
+        Boolean from = intent.getBooleanExtra("IS_FROM_MAINMENU", true);
+
         requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         itemName = (EditText) findViewById(R.id.itemName);
         itemDesc = (EditText) findViewById(R.id.itemDesc);
         itemQuan = (EditText) findViewById(R.id.itemQantity);
-        itemWare = (EditText) findViewById(R.id.itemWarehouse);
-        itemCust = (EditText) findViewById(R.id.itemCustomer);
+        itemWare = (Button) findViewById(R.id.chooseWarehouse);
+        itemCust = (Button) findViewById(R.id.chooseCustomer);
+
+        if(!from) {
+            itemName.setText(intent.getStringExtra("ITEM_NAME"));
+            itemDesc.setText(intent.getStringExtra("ITEM_DESCRIPTION"));
+            itemQuan.setText(intent.getStringExtra("ITEM_QUANTITY"));
+            itemWare.setText(intent.getStringExtra("ITEM_WAREHOUSE_ID"));
+            itemCust.setText(intent.getStringExtra("ITEM_CUSTOMER_ID"));
+        }
     }
 
     public void addItemFin(View view) {
         try {
             JSONObject jsonBody = new JSONObject();
-            jsonBody.put("name", itemName.getText().toString());
-            jsonBody.put("description", itemDesc.getText().toString());
-            jsonBody.put("quantity", Integer.parseInt(itemQuan.getText().toString()));
-            jsonBody.put("warehouseID", Integer.parseInt(itemWare.getText().toString()));
-            jsonBody.put("customerID", Integer.parseInt(itemCust.getText().toString()));
+            jsonBody.put("name", itemName.getText().toString().split(" ")[1]);
+            jsonBody.put("description", itemDesc.getText().toString().split(" ", 2)[1]);
+            jsonBody.put("quantity", Integer.parseInt(itemQuan.getText().toString().split(" ")[1]));
+            jsonBody.put("warehouseID", Integer.parseInt(itemWare.getText().toString().split(" ")[2]));
+            jsonBody.put("customerID", Integer.parseInt(itemCust.getText().toString().split(" ")[2]));
 
             final String mRequestBody = jsonBody.toString();
 
@@ -109,5 +126,45 @@ public class AddNewItemActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
 
+    }
+
+    public void openWarehouseSelection(View view) {
+
+        String quantity = itemQuan.getText().toString();
+        String name = itemName.getText().toString();
+        String description = itemDesc.getText().toString();
+        String warehouse = itemWare.getText().toString();
+        String customer = itemCust.getText().toString();
+
+        Intent myIntent = new Intent(this, WarehouseActivity.class);
+        myIntent.putExtra("ITEM_CUSTOMER_ID", customer);
+        myIntent.putExtra("ITEM_NAME", name);
+        myIntent.putExtra("ITEM_DESCRIPTION", description);
+        myIntent.putExtra("ITEM_QUANTITY", quantity);
+        myIntent.putExtra("ITEM_WAREHOUSE_ID", warehouse);
+        startActivity(myIntent);
+    }
+
+    public void openCustomerSelection(View view) {
+
+        String quantity = itemQuan.getText().toString();
+        String name = itemName.getText().toString();
+        String description = itemDesc.getText().toString();
+        String warehouse = itemWare.getText().toString();
+        String customer = itemCust.getText().toString();
+
+        Intent myIntent = new Intent(this, CustomerActivity.class);
+        myIntent.putExtra("ITEM_CUSTOMER_ID", customer);
+        myIntent.putExtra("ITEM_NAME", name);
+        myIntent.putExtra("ITEM_DESCRIPTION", description);
+        myIntent.putExtra("ITEM_QUANTITY", quantity);
+        myIntent.putExtra("ITEM_WAREHOUSE_ID", warehouse);
+        startActivity(myIntent);
+    }
+
+    public void backMain(View view) {
+        finish();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

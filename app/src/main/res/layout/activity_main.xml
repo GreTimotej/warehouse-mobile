@@ -41,6 +41,7 @@
         android:backgroundTint="#1580eb"
         android:text="Show all warehouses"
         android:textSize="20sp"
+        android:onClick="openWarehouse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#1580eb"
-        android:onClick="addItem"
+        android:onClick="openItems"
         android:text="Show all items"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -60,6 +61,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addItemButton"
         app:layout_constraintVertical_bias="0.45" />
+
+    <Button
+        android:id="@+id/showCustomersButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#1580eb"
+        android:onClick="openCustomer"
+        android:text="Show all customers"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addItemButton"
+        app:layout_constraintVertical_bias="0.774" />
 
     <Button
         android:id="@+id/qrscanButton"
