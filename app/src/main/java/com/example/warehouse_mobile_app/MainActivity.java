@@ -33,66 +33,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        requestQueue = Volley.newRequestQueue(getApplicationContext());
-        id = (EditText) findViewById(R.id.warehouseInput);
-        warehouses = (TextView) findViewById(R.id.warehouseList);
-        showWarehouses();
     }
 
-    public void selectWarehouse(View view) {
-        if (view != null) {
-            currentWarehouse = Integer.parseInt(id.getText().toString().split(" ")[2]);
-            warehouses.setText("Current warehouse: " + currentWarehouse);
-            Intent intent = new Intent(this, ScanActivity.class);
-            getIntent().putExtra(EXTRA_NUMBER, currentWarehouse);
-            startActivity(intent);
-        }
+    public void addItem(View view) {
+        Intent intent = new Intent(this, AddNewItemActivity.class);
+        startActivity(intent);
     }
 
-    public  void showWarehouses() {
-        JsonArrayRequest request = new JsonArrayRequest(url + "warehouseapi", jsonArrayListener, errorListener);
-        requestQueue.add(request);
+    public void scanItem(View view) {
+        Intent intent = new Intent(this, AddNewItemActivity.class);
+        startActivity(intent);
     }
 
-    private Response.Listener<JSONArray> jsonArrayListener = new Response.Listener<JSONArray>() {
-        @Override
-        public void onResponse(JSONArray response){
-            ArrayList<String> data = new ArrayList<>();
-
-            for (int i = 0; i < response.length(); i++){
-                try {
-                    JSONObject object =response.getJSONObject(i);
-                    int id = object.getInt("id");
-                    String address = object.getString("address");
-                    String city = object.getString("city");
-                    String country = object.getString("country");
-
-                    data.add(id + " - " + address + ", " + city + ", " + country);
-
-                } catch (JSONException e){
-                    e.printStackTrace();
-                    return;
-
-                }
-            }
-
-            //warehouses.setText("");
-
-            for (String row: data){
-                String currentText = warehouses.getText().toString();
-                warehouses.setText(currentText + "\n\n" + row);
-            }
-
-        }
-
-    };
-
-    private Response.ErrorListener errorListener = new Response.ErrorListener() {
-        @Override
-        public void onErrorResponse(VolleyError error) {
-            Log.d("REST error", error.getMessage());
-        }
-    };
-
-
+    public void exitApp(View view) {
+        finish();
+        System.exit(0);
+    }
 }

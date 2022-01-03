@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Warehouse_mobile_app"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ItemActivity"></activity>
+        <activity android:name=".AddNewItemActivity"></activity>
+        <activity android:name=".ItemActivity" />
         <activity android:name=".ScanActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

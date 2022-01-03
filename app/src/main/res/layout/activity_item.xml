@@ -86,14 +86,32 @@
         app:layout_constraintTop_toBottomOf="@+id/activeTextView"
         app:layout_constraintVertical_bias="0.889" />
 
-    <TextView
-        android:id="@+id/status"
+    <Button
+        android:id="@+id/scanButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="status"
+        android:backgroundTint="#eb2315"
+        android:onClick="scan"
+        android:text="Back to scanning"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintHorizontal_bias="0.19"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activeTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/activeTextView"
+        app:layout_constraintVertical_bias="0.889" />
+
+    <Button
+        android:id="@+id/mainMenuButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#eb2315"
+        android:onClick="mainMenu"
+        android:text="Back to main menu"
+        app:layout_constraintBottom_toTopOf="@+id/scanButton"
+        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintHorizontal_bias="0.188"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activeTextView"
+        app:layout_constraintVertical_bias="0.891" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
@@ -65,11 +66,20 @@ public class ItemActivity extends AppCompatActivity {
         descText = findViewById(R.id.descriptionTextView);
         quantityText = findViewById(R.id.quantityTextView);
         activeText = findViewById(R.id.activeTextView);
-        status = findViewById(R.id.status);
         status.setText(itemUrl);
         requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         showItem();
+    }
+
+    public void scan(View view) {
+        Intent intent = new Intent(this, ScanActivity.class);
+        startActivity(intent);
+    }
+
+    public void mainMenu(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     public  void showItem() {
@@ -177,6 +187,8 @@ public class ItemActivity extends AppCompatActivity {
         }
 
         changeItemActivitiy();
+
+        Toast.makeText(this, "Succesfully exported item with ID: " + itemID, Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(this, ScanActivity.class);
         startActivity(intent);

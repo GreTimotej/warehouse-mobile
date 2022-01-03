@@ -10,8 +10,9 @@
         android:id="@+id/warehouseList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Warehouses:"
-        android:textSize="20sp"
+        android:text="Welcome to the Warehouse mobile app\n Please select your business bellow"
+        android:textSize="25sp"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -20,28 +21,73 @@
         app:layout_constraintVertical_bias="0.157" />
 
     <Button
-        android:id="@+id/confirmWarehouse"
+        android:id="@+id/addItemButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="confirm Warehouse"
+        android:backgroundTint="#1580eb"
+        android:onClick="addItem"
+        android:text="Add new item"
         android:textSize="20sp"
-        android:onClick="selectWarehouse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/warehouseList" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
-    <EditText
-        android:id="@+id/warehouseInput"
+    <Button
+        android:id="@+id/browseWareHousesButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Warehouse ID: "
-        app:layout_constraintBottom_toTopOf="@+id/confirmWarehouse"
+        android:backgroundTint="#1580eb"
+        android:text="Show all warehouses"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.442"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/warehouseList" />
+        app:layout_constraintTop_toBottomOf="@+id/addItemButton"
+        app:layout_constraintVertical_bias="0.146" />
+
+    <Button
+        android:id="@+id/showItemsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#1580eb"
+        android:onClick="addItem"
+        android:text="Show all items"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addItemButton"
+        app:layout_constraintVertical_bias="0.45" />
+
+    <Button
+        android:id="@+id/exitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#eb2315"
+        android:onClick="exitApp"
+        android:text="Exit"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addItemButton"
+        app:layout_constraintVertical_bias="0.737" />
+
+    <Button
+        android:id="@+id/qrscanButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#1580eb"
+        android:onClick="scanItem"
+        android:text="Scan items"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.37" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
