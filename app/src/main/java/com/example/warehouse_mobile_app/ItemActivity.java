@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +45,7 @@ public class ItemActivity extends AppCompatActivity {
     private TextView quantityText;
     private TextView activeText;
     private TextView status;
+    private Button export;
 
     private int itemID;
     private String name;
@@ -71,6 +73,7 @@ public class ItemActivity extends AppCompatActivity {
         status = findViewById(R.id.textView);
         status.setText(itemUrl);
         requestQueue = Volley.newRequestQueue(getApplicationContext());
+        export = findViewById(R.id.button);
 
         showItem();
     }
@@ -113,6 +116,10 @@ public class ItemActivity extends AppCompatActivity {
                 active = response.getBoolean("active");
                 warehouseID = response.getInt("warehouseID");
                 customerID = response.getInt("customerID");
+
+                if(!active) {
+                    export.setVisibility(View.INVISIBLE);
+                }
 
             } catch (JSONException e){
                 e.printStackTrace();
