@@ -26,17 +26,19 @@ public class AllItemsActivity extends AppCompatActivity {
     private String url = "https://warehouse-is.azurewebsites.net/api/itemapi/";
     private RequestQueue requestQueue;
     TextView items;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_items);
 
-        Intent intent = getIntent();
-        warehouse = intent.getStringExtra("ITEM_WAREHOUSE_ID");
-
         requestQueue = Volley.newRequestQueue(getApplicationContext());
         items = (TextView) findViewById(R.id.customersTextView);
+
+        intent = getIntent();
+
+        warehouse = intent.getStringExtra("ITEM_WAREHOUSE_ID");
 
         showItems();
     }
@@ -67,7 +69,11 @@ public class AllItemsActivity extends AppCompatActivity {
                     int ware = object.getInt("warehouseID");
                     boolean act = object.getBoolean("active");
 
-                    if(ware == Integer.parseInt(warehouse.split(" ")[2]) && act) {
+                    if(!intent.getBooleanExtra("SHOW_ALL_ITEMS", false)) {
+                        if (ware == Integer.parseInt(warehouse.split(" ")[2]) && act) {
+                            data.add(name + ", " + description + ", Q: " + quantity);
+                        }
+                    } else {
                         data.add(name + ", " + description + ", Q: " + quantity);
                     }
 

@@ -51,6 +51,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Choose warehouse"
+        android:backgroundTint="#1580eb"
+        android:textColor="@color/appRed"
         android:onClick="openWarehouseSelection"/>
 
     <Button
@@ -58,6 +60,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Choose customer"
+        android:backgroundTint="#1580eb"
+        android:textColor="@color/appRed"
         android:onClick="openCustomerSelection"/>
 
         <Button

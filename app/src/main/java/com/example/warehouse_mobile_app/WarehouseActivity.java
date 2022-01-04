@@ -33,6 +33,8 @@ public class WarehouseActivity extends AppCompatActivity {
     private String description;
     private String  quantity;
     private String customer;
+    private boolean wh_ok;
+    private boolean cs_ok;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,8 @@ public class WarehouseActivity extends AppCompatActivity {
         description = intent.getStringExtra("ITEM_DESCRIPTION");
         quantity = intent.getStringExtra("ITEM_QUANTITY");
         customer = intent.getStringExtra("ITEM_CUSTOMER_ID");
+        wh_ok = intent.getBooleanExtra("WAREHOUSE_OK", false);
+        cs_ok = intent.getBooleanExtra("CUSTOMER_OK", false);
 
         requestQueue = Volley.newRequestQueue(getApplicationContext());
         warehouseID = (EditText) findViewById(R.id.customereID);
@@ -127,6 +131,8 @@ public class WarehouseActivity extends AppCompatActivity {
         myIntent.putExtra("ITEM_QUANTITY", quantity);
         myIntent.putExtra("ITEM_WAREHOUSE_ID", id);
         myIntent.putExtra("IS_FROM_MAINMENU", false);
+        myIntent.putExtra("WAREHOUSE_OK",true);
+        myIntent.putExtra("CUSTOMER_OK", cs_ok);
         startActivity(myIntent);
     }
 
@@ -138,8 +144,14 @@ public class WarehouseActivity extends AppCompatActivity {
 
     public void goToItems() {
         String id = warehouseID.getText().toString();
-        Intent myIntent = new Intent(this, AllItemsActivity.class);
-        myIntent.putExtra("ITEM_WAREHOUSE_ID", id);
-        startActivity(myIntent);
+        if (id.split(" ").length == 2) {
+            Intent myIntent = new Intent(this, AllItemsActivity.class);
+            myIntent.putExtra("SHOW_ALL_ITEMS", true);
+            startActivity(myIntent);
+        } else {
+            Intent myIntent = new Intent(this, AllItemsActivity.class);
+            myIntent.putExtra("ITEM_WAREHOUSE_ID", id);
+            startActivity(myIntent);
+        }
     }
 }

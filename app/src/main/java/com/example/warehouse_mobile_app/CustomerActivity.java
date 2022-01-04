@@ -33,6 +33,8 @@ public class CustomerActivity extends AppCompatActivity {
     private String description;
     private String quantity;
     private String warehouse;
+    private boolean wh_ok;
+    private boolean cs_ok;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,8 @@ public class CustomerActivity extends AppCompatActivity {
         description = intent.getStringExtra("ITEM_DESCRIPTION");
         quantity = intent.getStringExtra("ITEM_QUANTITY");
         warehouse = intent.getStringExtra("ITEM_WAREHOUSE_ID");
+        wh_ok = intent.getBooleanExtra("WAREHOUSE_OK", false);
+        cs_ok = intent.getBooleanExtra("CUSTOMER_OK", false);
 
         requestQueue = Volley.newRequestQueue(getApplicationContext());
         customerID = (EditText) findViewById(R.id.customereID);
@@ -113,6 +117,8 @@ public class CustomerActivity extends AppCompatActivity {
         myIntent.putExtra("ITEM_QUANTITY", quantity);
         myIntent.putExtra("ITEM_WAREHOUSE_ID", warehouse);
         myIntent.putExtra("IS_FROM_MAINMENU", false);
+        myIntent.putExtra("CUSTOMER_OK", true);
+        myIntent.putExtra("WAREHOUSE_OK", wh_ok);
         startActivity(myIntent);
     }
 

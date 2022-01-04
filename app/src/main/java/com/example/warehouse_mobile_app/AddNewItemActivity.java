@@ -1,6 +1,7 @@
 package com.example.warehouse_mobile_app;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,6 +40,8 @@ public class AddNewItemActivity extends AppCompatActivity {
     public static String ITEM_QUANTITY = "Quantity: ";
     public static String ITEM_DESCRIPTION = "Description: ";
     public static String ITEM_NAME = "Name:";
+    public static boolean WAREHOUSE_OK;
+    public static boolean CUSTOMER_OK;
 
     private RequestQueue requestQueue;
     private String url = "https://warehouse-is.azurewebsites.net/api/itemapi";
@@ -65,6 +68,14 @@ public class AddNewItemActivity extends AppCompatActivity {
             itemQuan.setText(intent.getStringExtra("ITEM_QUANTITY"));
             itemWare.setText(intent.getStringExtra("ITEM_WAREHOUSE_ID"));
             itemCust.setText(intent.getStringExtra("ITEM_CUSTOMER_ID"));
+            if (intent.getBooleanExtra("WAREHOUSE_OK", false)) {
+                itemWare.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.appGreen));
+                WAREHOUSE_OK = true;
+            }
+            if (intent.getBooleanExtra("CUSTOMER_OK", false)) {
+                itemCust.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.appGreen));
+                CUSTOMER_OK = true;
+            }
         }
     }
 
@@ -142,6 +153,8 @@ public class AddNewItemActivity extends AppCompatActivity {
         myIntent.putExtra("ITEM_DESCRIPTION", description);
         myIntent.putExtra("ITEM_QUANTITY", quantity);
         myIntent.putExtra("ITEM_WAREHOUSE_ID", warehouse);
+        myIntent.putExtra("WAREHOUSE_OK", WAREHOUSE_OK);
+        myIntent.putExtra("CUSTOMER_OK", CUSTOMER_OK);
         startActivity(myIntent);
     }
 
@@ -159,6 +172,8 @@ public class AddNewItemActivity extends AppCompatActivity {
         myIntent.putExtra("ITEM_DESCRIPTION", description);
         myIntent.putExtra("ITEM_QUANTITY", quantity);
         myIntent.putExtra("ITEM_WAREHOUSE_ID", warehouse);
+        myIntent.putExtra("WAREHOUSE_OK", WAREHOUSE_OK);
+        myIntent.putExtra("CUSTOMER_OK", CUSTOMER_OK);
         startActivity(myIntent);
     }
 
