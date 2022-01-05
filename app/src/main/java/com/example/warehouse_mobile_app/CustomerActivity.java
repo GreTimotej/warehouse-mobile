@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -21,6 +22,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CustomerActivity extends AppCompatActivity {
 
@@ -64,7 +67,15 @@ public class CustomerActivity extends AppCompatActivity {
     }
 
     public  void showCustomers(){
-        JsonArrayRequest request = new JsonArrayRequest(url, jsonArrayListener, errorListener);
+        JsonArrayRequest request = new JsonArrayRequest(url, jsonArrayListener, errorListener) {
+            @Override
+            public Map<String,String> getHeaders() throws AuthFailureError
+            {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("ApiKey", "123kuhaneSalame123");
+                return params;
+            }
+        };
         requestQueue.add(request);
     }
 

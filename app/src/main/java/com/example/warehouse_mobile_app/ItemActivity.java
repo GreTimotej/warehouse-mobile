@@ -34,6 +34,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ItemActivity extends AppCompatActivity {
 
@@ -63,7 +65,7 @@ public class ItemActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         itemUrl = "https://warehouse-is.azurewebsites.net/api/itemapi/" + intent.getStringExtra(ScanActivity.SCANNED_ID);
-        //itemUrl = "https://warehouse-is.azurewebsites.net/api/itemapi/5";
+        //itemUrl = "https://warehouse-is.azurewebsites.net/api/itemapi/16";
 
         idText = findViewById(R.id.idTextView);
         nameText = findViewById(R.id.nameTextView);
@@ -89,7 +91,15 @@ public class ItemActivity extends AppCompatActivity {
     }
 
     public  void showItem() {
-        JsonObjectRequest request = new JsonObjectRequest(itemUrl, jsonObjectListener, errorListener);
+        JsonObjectRequest request = new JsonObjectRequest(itemUrl, jsonObjectListener, errorListener) {
+            @Override
+            public Map<String,String> getHeaders() throws AuthFailureError
+            {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("ApiKey", "123kuhaneSalame123");
+                return params;
+            }
+        };
         requestQueue.add(request);
     }
 
@@ -188,6 +198,14 @@ public class ItemActivity extends AppCompatActivity {
                     return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
                 }
 
+                @Override
+                public Map<String,String> getHeaders() throws AuthFailureError
+                {
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("ApiKey", "123kuhaneSalame123");
+                    return params;
+                }
+
             };
 
             requestQueue.add(stringRequest);
@@ -251,6 +269,14 @@ public class ItemActivity extends AppCompatActivity {
                         status.setText(responseString);
                     }
                     return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
+                }
+
+                @Override
+                public Map<String,String> getHeaders() throws AuthFailureError
+                {
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("ApiKey", "123kuhaneSalame123");
+                    return params;
                 }
 
             };
