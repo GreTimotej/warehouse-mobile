@@ -19,6 +19,7 @@
                 android:id="@+id/customersTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10sp"
                 android:text="Warehouses:\n\n"
                 android:textSize="20sp" />
 
@@ -26,6 +27,7 @@
                 android:id="@+id/customereID"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:layout_margin="10sp"
                 android:textSize="20sp"
                 android:inputType="number"
                 android:text="Warehouse ID: " />
@@ -34,16 +36,20 @@
                 android:id="@+id/confirmCustomer"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:layout_marginHorizontal="20sp"
+                app:cornerRadius="10sp"
                 android:text="Confirm warehouse ID"
                 android:textSize="20sp"
-                android:backgroundTint="#1580eb"/>
+                android:backgroundTint="#548EEB"/>
 
             <Button
                 android:id="@+id/backButton"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="bottom"
-                android:backgroundTint="#eb2315"
+                android:layout_marginHorizontal="20sp"
+                app:cornerRadius="10sp"
+                android:backgroundTint="#CF4812"
                 android:text="Back to Main Menu"
                 android:textSize="20sp"
                 android:onClick="backMain"/>

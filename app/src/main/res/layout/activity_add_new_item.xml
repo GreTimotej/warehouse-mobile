@@ -50,8 +50,11 @@
         android:id="@+id/chooseWarehouse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
         android:text="Choose warehouse"
-        android:backgroundTint="#1580eb"
+        android:layout_marginHorizontal="20sp"
+        app:cornerRadius="10sp"
+        android:backgroundTint="#548EEB"
         android:textColor="@color/appRed"
         android:onClick="openWarehouseSelection"/>
 
@@ -59,8 +62,10 @@
         android:id="@+id/chooseCustomer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20sp"
+        app:cornerRadius="10sp"
         android:text="Choose customer"
-        android:backgroundTint="#1580eb"
+        android:backgroundTint="#548EEB"
         android:textColor="@color/appRed"
         android:onClick="openCustomerSelection"/>
 
@@ -68,16 +73,20 @@
         android:id="@+id/submit"
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:layout_marginHorizontal="20sp"
+        app:cornerRadius="10sp"
         android:onClick="addItemFin"
         android:text="Add Item"
-        android:backgroundTint="#1580eb" />
+        android:backgroundTint="#548EEB" />
 
         <Button
             android:id="@+id/backButton"
             android:layout_width="match_parent"
             android:layout_height="45dp"
+            android:layout_marginHorizontal="20sp"
+            app:cornerRadius="10sp"
             android:layout_gravity="bottom"
-            android:backgroundTint="#eb2315"
+            android:backgroundTint="#CF4812"
             android:text="Back to Main Menu"
             android:textSize="20sp"
             android:onClick="backMain"/>
