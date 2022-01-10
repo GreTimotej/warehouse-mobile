@@ -73,8 +73,10 @@
         android:id="@+id/chooseDistributor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20sp"
+        app:cornerRadius="10sp"
         android:text="Choose distributor"
-        android:backgroundTint="#1580eb"
+        android:backgroundTint="#548EEB"
         android:textColor="@color/appRed"
         android:onClick="openDistributorSelection"/>
 

@@ -19,6 +19,7 @@
                 android:id="@+id/distributorTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10sp"
                 android:text="Distributors:\n\n"
                 android:textSize="20sp" />
 
@@ -26,6 +27,7 @@
                 android:id="@+id/distributorID"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:layout_margin="10sp"
                 android:inputType="number"
                 android:text="Distributor ID: "
                 android:textSize="20sp" />
@@ -34,7 +36,9 @@
                 android:id="@+id/confirmDistributor"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:backgroundTint="#1580eb"
+                android:layout_marginHorizontal="20sp"
+                app:cornerRadius="10sp"
+                android:backgroundTint="#548EEB"
                 android:text="Confirm distirbutor ID"
                 android:textSize="20sp"
                 android:onClick="selectDistributor"/>
@@ -44,7 +48,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="bottom"
-                android:backgroundTint="#eb2315"
+                android:layout_marginHorizontal="20sp"
+                app:cornerRadius="10sp"
+                android:backgroundTint="#CF4812"
                 android:onClick="backMain"
                 android:text="Back to Main Menu"
                 android:textSize="20sp" />
