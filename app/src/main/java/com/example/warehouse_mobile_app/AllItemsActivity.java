@@ -82,10 +82,10 @@ public class AllItemsActivity extends AppCompatActivity {
 
                     if(!intent.getBooleanExtra("SHOW_ALL_ITEMS", false)) {
                         if (ware == Integer.parseInt(warehouse.split(" ")[2]) && act) {
-                            data.add(name + ", " + description + ", Q: " + quantity);
+                            data.add("Name: "+name + "\nDescription:" + description + "\nQuantity: " + quantity);
                         }
                     } else {
-                        data.add(name + ", " + description + ", Q: " + quantity);
+                        data.add("Name: "+name + "\nDescription:" + description + "\nQuantity: " + quantity);
                     }
 
                 } catch (JSONException e){

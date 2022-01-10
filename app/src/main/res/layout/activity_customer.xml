@@ -18,6 +18,7 @@
             <TextView
                 android:id="@+id/customersTextView"
                 android:layout_width="match_parent"
+                android:layout_margin="10sp"
                 android:layout_height="wrap_content"
                 android:text="Customers:\n\n"
                 android:textSize="20sp" />
@@ -26,6 +27,7 @@
                 android:id="@+id/customereID"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:layout_margin="10sp"
                 android:inputType="number"
                 android:text="Customer ID: "
                 android:textSize="20sp" />
@@ -34,8 +36,10 @@
                 android:id="@+id/confirmCustomer"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:backgroundTint="#1580eb"
+                android:backgroundTint="#548EEB"
                 android:text="Confirm customer ID"
+                android:layout_marginHorizontal="20sp"
+                app:cornerRadius="10sp"
                 android:textSize="20sp"
                 android:onClick="selectCustomer"/>
 
@@ -44,7 +48,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="bottom"
-                android:backgroundTint="#eb2315"
+                android:layout_marginHorizontal="20sp"
+                app:cornerRadius="10sp"
+                android:backgroundTint="#CF4812"
                 android:text="Back to Main Menu"
                 android:textSize="20sp"
                 android:onClick="backMain"/>

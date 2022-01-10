@@ -19,7 +19,8 @@
                 android:id="@+id/customersTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Items:\n\n"
+                android:layout_margin="10sp"
+                android:text="Items:\n"
                 android:textSize="20sp" />
 
             <Button
@@ -27,10 +28,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="bottom"
+                android:layout_marginHorizontal="20sp"
+                app:cornerRadius="10sp"
                 android:backgroundTint="#eb2315"
+                android:onClick="backMain"
                 android:text="Back to Main Menu"
                 android:textSize="20sp"
-                android:onClick="backMain"/>
+                 />
 
         </LinearLayout>
 
