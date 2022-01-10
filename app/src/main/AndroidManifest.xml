@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Warehouse_mobile_app"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AllItemsActivity"></activity>
+        <activity android:name=".DistributorActivity"></activity>
+        <activity android:name=".AllItemsActivity" />
         <activity android:name=".CustomerActivity" />
         <activity
             android:name=".WarehouseActivity"

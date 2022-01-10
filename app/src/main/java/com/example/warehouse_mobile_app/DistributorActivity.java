@@ -25,18 +25,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CustomerActivity extends AppCompatActivity {
+public class DistributorActivity extends AppCompatActivity {
 
     private RequestQueue requestQueue;
-    private EditText customerID;
-    private TextView customers;
+    private EditText distributorID;
+    private TextView distributors;
     private Button confirmID;
-    private String url = "https://warehouse-is.azurewebsites.net/api/customerapi/";
+    private String url = "https://warehouse-is.azurewebsites.net/api/distributorapi/";
     private String itemName;
     private String description;
     private String quantity;
     private String warehouse;
-    private String distributor;
+    private String customer;
     private boolean wh_ok;
     private boolean cs_ok;
     private boolean ds_ok;
@@ -44,7 +44,7 @@ public class CustomerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer);
+        setContentView(R.layout.activity_distributor);
 
         Intent intent = getIntent();
         boolean fromMain = intent.getBooleanExtra("IS_FROM_MAINMENU", false);
@@ -52,25 +52,20 @@ public class CustomerActivity extends AppCompatActivity {
         description = intent.getStringExtra("ITEM_DESCRIPTION");
         quantity = intent.getStringExtra("ITEM_QUANTITY");
         warehouse = intent.getStringExtra("ITEM_WAREHOUSE_ID");
-        distributor = intent.getStringExtra("ITEM_DISTRIBUTOR_ID");
+        customer = intent.getStringExtra("ITEM_CUSTOMER_ID");
         wh_ok = intent.getBooleanExtra("WAREHOUSE_OK", false);
         cs_ok = intent.getBooleanExtra("CUSTOMER_OK", false);
         ds_ok = intent.getBooleanExtra("DISTRIBUTOR_OK", false);
 
         requestQueue = Volley.newRequestQueue(getApplicationContext());
-        customerID = (EditText) findViewById(R.id.customereID);
-        customers = (TextView) findViewById(R.id.customersTextView);
-        confirmID = (Button) findViewById(R.id.confirmCustomer);
+        distributorID = (EditText) findViewById(R.id.distributorID);
+        distributors = (TextView) findViewById(R.id.distributorTextView);
+        confirmID = (Button) findViewById(R.id.confirmDistributor);
 
-        if(fromMain) {
-            customerID.setVisibility(View.INVISIBLE);
-            confirmID.setVisibility(View.INVISIBLE);
-        }
-
-        showCustomers();
+        showDistributors();
     }
 
-    public  void showCustomers(){
+    public  void showDistributors(){
         JsonArrayRequest request = new JsonArrayRequest(url, jsonArrayListener, errorListener) {
             @Override
             public Map<String,String> getHeaders() throws AuthFailureError
@@ -92,13 +87,12 @@ public class CustomerActivity extends AppCompatActivity {
                 try {
                     JSONObject object =response.getJSONObject(i);
                     int id = object.getInt("id");
-                    String fName = object.getString("firstName");
-                    String lName = object.getString("lastName");
+                    String name = object.getString("name");
                     String address = object.getString("address");
                     String city = object.getString("city");
                     String country = object.getString("country");
 
-                    data.add(id + " - " + fName + ", " + lName + ", " + address + ", " + city + ", " + country);
+                    data.add(id + " - " + name + ", " + address + ", " + city + ", " + country);
 
                 } catch (JSONException e){
                     e.printStackTrace();
@@ -108,8 +102,8 @@ public class CustomerActivity extends AppCompatActivity {
             }
 
             for (String row: data){
-                String currentText = customers.getText().toString();
-                customers.setText(currentText + "\n\n" + row);
+                String currentText = distributors.getText().toString();
+                distributors.setText(currentText + "\n\n" + row);
             }
 
         }
@@ -123,19 +117,19 @@ public class CustomerActivity extends AppCompatActivity {
         }
     };
 
-    public void selectCustomer(View view) {
-        String id = customerID.getText().toString();
+    public void selectDistributor(View view) {
+        String id = distributorID.getText().toString();
         Intent myIntent = new Intent(this, AddNewItemActivity.class);
-        myIntent.putExtra("ITEM_CUSTOMER_ID", id);
+        myIntent.putExtra("ITEM_DISTRIBUTOR_ID", id);
         myIntent.putExtra("ITEM_NAME", itemName);
         myIntent.putExtra("ITEM_DESCRIPTION", description);
         myIntent.putExtra("ITEM_QUANTITY", quantity);
         myIntent.putExtra("ITEM_WAREHOUSE_ID", warehouse);
-        myIntent.putExtra("ITEM_DISTRIBUTOR_ID", distributor);
+        myIntent.putExtra("ITEM_CUSTOMER_ID", customer);
         myIntent.putExtra("IS_FROM_MAINMENU", false);
-        myIntent.putExtra("CUSTOMER_OK", true);
+        myIntent.putExtra("DISTRIBUTOR_OK", true);
         myIntent.putExtra("WAREHOUSE_OK", wh_ok);
-        myIntent.putExtra("DISTRIBUTOR_OK", ds_ok);
+        myIntent.putExtra("CUSTOMER_OK", cs_ok);
         startActivity(myIntent);
     }
 
