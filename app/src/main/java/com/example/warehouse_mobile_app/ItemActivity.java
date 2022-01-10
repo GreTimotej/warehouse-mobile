@@ -56,6 +56,7 @@ public class ItemActivity extends AppCompatActivity {
     private Boolean active;
     private int warehouseID;
     private int customerID;
+    private int distributorID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,6 +127,7 @@ public class ItemActivity extends AppCompatActivity {
                 active = response.getBoolean("active");
                 warehouseID = response.getInt("warehouseID");
                 customerID = response.getInt("customerID");
+                distributorID = response.getInt("distributorID");
 
                 if(!active) {
                     export.setVisibility(View.INVISIBLE);
@@ -233,6 +235,7 @@ public class ItemActivity extends AppCompatActivity {
             jsonBody.put("active", false);
             jsonBody.put("warehouseID", warehouseID);
             jsonBody.put("customerID", customerID);
+            jsonBody.put("distributorID", distributorID);
 
             final String mRequestBody = jsonBody.toString();
 
