@@ -64,6 +64,15 @@
         android:textColor="@color/appRed"
         android:onClick="openCustomerSelection"/>
 
+    <Button
+        android:id="@+id/chooseDistributor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Choose distributor"
+        android:backgroundTint="#1580eb"
+        android:textColor="@color/appRed"
+        android:onClick="openDistributorSelection"/>
+
         <Button
         android:id="@+id/submit"
         android:layout_width="match_parent"

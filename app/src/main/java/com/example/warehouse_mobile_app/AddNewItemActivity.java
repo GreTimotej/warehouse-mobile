@@ -37,13 +37,16 @@ public class AddNewItemActivity extends AppCompatActivity {
     private EditText itemQuan;
     private Button itemWare;
     private Button itemCust;
+    private Button itemDist;
     public static String ITEM_CUSTOMER_ID = "Choose customer";
     public static String ITEM_WAREHOUSE_ID = "Choose warehouse";
+    public static String ITEM_DISTRIBUTOR_ID = "Choose distributor";
     public static String ITEM_QUANTITY = "Quantity: ";
     public static String ITEM_DESCRIPTION = "Description: ";
     public static String ITEM_NAME = "Name:";
     public static boolean WAREHOUSE_OK;
     public static boolean CUSTOMER_OK;
+    public static boolean DISTRIBUTOR_OK;
 
     private RequestQueue requestQueue;
     private String url = "https://warehouse-is.azurewebsites.net/api/itemapi";
@@ -63,6 +66,7 @@ public class AddNewItemActivity extends AppCompatActivity {
         itemQuan = (EditText) findViewById(R.id.itemQantity);
         itemWare = (Button) findViewById(R.id.chooseWarehouse);
         itemCust = (Button) findViewById(R.id.chooseCustomer);
+        itemDist = (Button) findViewById(R.id.chooseDistributor);
 
         if(!from) {
             itemName.setText(intent.getStringExtra("ITEM_NAME"));
@@ -70,6 +74,7 @@ public class AddNewItemActivity extends AppCompatActivity {
             itemQuan.setText(intent.getStringExtra("ITEM_QUANTITY"));
             itemWare.setText(intent.getStringExtra("ITEM_WAREHOUSE_ID"));
             itemCust.setText(intent.getStringExtra("ITEM_CUSTOMER_ID"));
+            itemDist.setText(intent.getStringExtra("ITEM_DISTRIBUTOR_ID"));
             if (intent.getBooleanExtra("WAREHOUSE_OK", false)) {
                 itemWare.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.appGreen));
                 WAREHOUSE_OK = true;
@@ -77,6 +82,10 @@ public class AddNewItemActivity extends AppCompatActivity {
             if (intent.getBooleanExtra("CUSTOMER_OK", false)) {
                 itemCust.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.appGreen));
                 CUSTOMER_OK = true;
+            }
+            if (intent.getBooleanExtra("DISTRIBUTOR_OK", false)) {
+                itemDist.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.appGreen));
+                DISTRIBUTOR_OK = true;
             }
         }
     }
@@ -89,6 +98,7 @@ public class AddNewItemActivity extends AppCompatActivity {
             jsonBody.put("quantity", Integer.parseInt(itemQuan.getText().toString().split(" ")[1]));
             jsonBody.put("warehouseID", Integer.parseInt(itemWare.getText().toString().split(" ")[2]));
             jsonBody.put("customerID", Integer.parseInt(itemCust.getText().toString().split(" ")[2]));
+            jsonBody.put("distributorID", Integer.parseInt(itemDist.getText().toString().split(" ")[2]));
 
             final String mRequestBody = jsonBody.toString();
 
@@ -156,6 +166,7 @@ public class AddNewItemActivity extends AppCompatActivity {
         String description = itemDesc.getText().toString();
         String warehouse = itemWare.getText().toString();
         String customer = itemCust.getText().toString();
+        String distributor = itemDist.getText().toString();
 
         Intent myIntent = new Intent(this, WarehouseActivity.class);
         myIntent.putExtra("ITEM_CUSTOMER_ID", customer);
@@ -163,8 +174,10 @@ public class AddNewItemActivity extends AppCompatActivity {
         myIntent.putExtra("ITEM_DESCRIPTION", description);
         myIntent.putExtra("ITEM_QUANTITY", quantity);
         myIntent.putExtra("ITEM_WAREHOUSE_ID", warehouse);
+        myIntent.putExtra("ITEM_DISTRIBUTOR_ID", distributor);
         myIntent.putExtra("WAREHOUSE_OK", WAREHOUSE_OK);
         myIntent.putExtra("CUSTOMER_OK", CUSTOMER_OK);
+        myIntent.putExtra("DISTRIBUTOR_OK", DISTRIBUTOR_OK);
         startActivity(myIntent);
     }
 
@@ -175,6 +188,7 @@ public class AddNewItemActivity extends AppCompatActivity {
         String description = itemDesc.getText().toString();
         String warehouse = itemWare.getText().toString();
         String customer = itemCust.getText().toString();
+        String distributor = itemDist.getText().toString();
 
         Intent myIntent = new Intent(this, CustomerActivity.class);
         myIntent.putExtra("ITEM_CUSTOMER_ID", customer);
@@ -182,8 +196,32 @@ public class AddNewItemActivity extends AppCompatActivity {
         myIntent.putExtra("ITEM_DESCRIPTION", description);
         myIntent.putExtra("ITEM_QUANTITY", quantity);
         myIntent.putExtra("ITEM_WAREHOUSE_ID", warehouse);
+        myIntent.putExtra("ITEM_DISTRIBUTOR_ID", distributor);
         myIntent.putExtra("WAREHOUSE_OK", WAREHOUSE_OK);
         myIntent.putExtra("CUSTOMER_OK", CUSTOMER_OK);
+        myIntent.putExtra("DISTRIBUTOR_OK", DISTRIBUTOR_OK);
+        startActivity(myIntent);
+    }
+
+    public void openDistributorSelection(View view) {
+
+        String quantity = itemQuan.getText().toString();
+        String name = itemName.getText().toString();
+        String description = itemDesc.getText().toString();
+        String warehouse = itemWare.getText().toString();
+        String customer = itemCust.getText().toString();
+        String distributor = itemDist.getText().toString();
+
+        Intent myIntent = new Intent(this, DistributorActivity.class);
+        myIntent.putExtra("ITEM_CUSTOMER_ID", customer);
+        myIntent.putExtra("ITEM_NAME", name);
+        myIntent.putExtra("ITEM_DESCRIPTION", description);
+        myIntent.putExtra("ITEM_QUANTITY", quantity);
+        myIntent.putExtra("ITEM_WAREHOUSE_ID", warehouse);
+        myIntent.putExtra("ITEM_DISTRIBUTOR_ID", distributor);
+        myIntent.putExtra("WAREHOUSE_OK", WAREHOUSE_OK);
+        myIntent.putExtra("CUSTOMER_OK", CUSTOMER_OK);
+        myIntent.putExtra("DISTRIBUTOR_OK", DISTRIBUTOR_OK);
         startActivity(myIntent);
     }
 
